@@ -20,8 +20,7 @@ int _printf(const char *format, ...)
 		{
 			write(1, format, 1);
 			print_chars++;
-		}
-		else
+		} else
 		{
 			format++;
 			if (*format == '\0')
@@ -48,4 +47,5 @@ int _printf(const char *format, ...)
 			}
 		} format++;
 	} va_end(list_of_args);
+	return (print_chars);
 }
