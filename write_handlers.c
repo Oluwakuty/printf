@@ -23,8 +23,9 @@ int handle_write_char(char c, char buffer[],
 	UNUSED(size);
 
 	if (flags & F_ZERO)
-		padd = '0';\
-		       buffer[i++] = c;buffer[i] = '\0';
+		padd = '0';
+	buffer[i++] = c;
+	buffer[i] = '\0';
 	if (width > 1)
 	{
 		buffer[BUFF_SIZE - 1] = '\0';
@@ -58,6 +59,7 @@ int write_number(int is_negative, int ind, char buffer[],
 {
 	int length = BUFF_SIZE - ind - 1;
 	char padd = ' ', extra_ch = 0;
+
 	UNUSED(size);
 
 	if ((flags & F_ZERO) && !(flags & F_MINUS))
