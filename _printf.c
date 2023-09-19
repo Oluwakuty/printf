@@ -40,9 +40,6 @@ int _printf(const char *format, ...)
 			{
 				char c = va_arg(myprint, int);/*check single char*/
 
-				if (!((c >= '!') && (c <= '~')))
-					return (-1);
-
 				write(1, &c, 1);
 				char_len++;
 			} else if (format[j] == 's') /*handle s convr*/
