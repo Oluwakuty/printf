@@ -40,11 +40,11 @@ int _printf(const char *format, ...)
 			{
 				if (format[j] == 'c') /*handle c convr*/
 				{	char c = va_arg(myprint, int);/*check single char*/
-					if ((c >= 32) && (c <= 126)) /*error handling for c*/
+					if ((c >= ' ') && (c <= '~')) /*error handling for c*/
 					{
 						write(1, &c, 1);
 						char_len++;
-					} else
+					} else 
 						return (-1);
 				} else if (format[j] == 's') /*handle s convr*/
 				{
