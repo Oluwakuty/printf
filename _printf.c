@@ -38,17 +38,26 @@ int _printf(const char *format, ...)
 				char_len++;
 			} else if (format[j] == 'c') /*handle c convr*/
 			{
-				char c = va_arg(myprint, int);/*check single char*/
+				char c = va_arg(myprint, int); /*check single char*/
 
-				write(1, &c, 1);
-				char_len++;
+				if (c)
+				{
+					write(1, &c, 1);
+					char_len++;
+				} else
+					return (-1);
 			} else if (format[j] == 's') /*handle s convr*/
 			{
 				char *s = va_arg(myprint, char *); /*store string in s*/
-				int s_len = strlen(s);
 
-				write(1, s, s_len);
-				char_len += s_len;
+				if (s)
+				{
+					int s_len = strlen(s);
+
+					write(1, s, s_len);
+					char_len += s_len;
+				} else
+					return (-1);
 			}
 		}
 	}
