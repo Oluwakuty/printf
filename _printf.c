@@ -13,6 +13,7 @@ int _printf(const char *format, ...)
 	va_list myprint; /*declare the name of our list as myprint*/
 
 	int format_len = strlen(format), char_len = 0, i;
+
 	va_start(myprint, format); /*init arg list*/
 
 	if (format == NULL) /*check invalid input*/
