@@ -3,11 +3,13 @@
 
 /*****C LIBRARY HEADERS*****/
 #include <stdarg.h>
-#include <stdio.h>
+#include <string.h>
 #include <unistd.h>
 #include <string.h>
 
-// Project provided prototypes
+
+/* Project provided prototypes */
 int _printf(const char *format, ...);
+
 
 #endif /* MAIN_H */
