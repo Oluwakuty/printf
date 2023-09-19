@@ -6,8 +6,6 @@
 #include <unistd.h>
 
 int _printf(const char *format, ...);
-void handle_specifiers(const char *format, ...);
-
 
 
 #endif /* MAIN_H */
