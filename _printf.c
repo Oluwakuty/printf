@@ -8,59 +8,46 @@
  * Return: number of characters printed without the null byte
  */
 
-int _printf(const char *format, ...);
-
 int _printf(const char *format, ...)
 {
-	va_list myprint; /*declare the name of our list as myprint*/
+	va_list my_list;
 
-	int format_len = strlen(format), char_len = 0, i;
+	int count = 0;
+	va_start(my_list, format);
 
-	va_start(myprint, format); /*init arg list*/
-
-	if (format == NULL) /*check invalid input*/
-		return (-1);
-
-	for (i = 0; i < format_len; i++)
+	for (; *format != '\0'; format++)
 	{
-		if (format[i] != '%') /*check for char wth format*/
-		{	char fp = format[i];
-
-			write(1, &fp, 1);
-			char_len++; /*increment string lenght*/
-		} else
-		{	int j = ++i;
-
-			if (format[j] == '%') /*handle % convr*/
-			{	char fp = format[j];
-
-				write(1, &fp, 1);
-				char_len++;
-			} else if (format[j] == 'c') /*handle c convr*/
+		if (*format == '%')
+		{
+			format++;
+			if (*format == '\0')
+				break;
+			if (*format == 'c')
 			{
-				char c = va_arg(myprint, int); /*check single char*/
+				char c = (char)va_arg(my_list, int);
 
-				if (c)
-				{
-					write(1, &c, 1);
-					char_len++;
-				} else
-					return (-1);
-			} else if (format[j] == 's') /*handle s convr*/
+				write(1, &c, 1);
+				count++;
+			} else if (*format == 's')
 			{
-				char *s = va_arg(myprint, char *); /*store string in s*/
+				char *string = va_arg(my_list, char*);
 
-				if (s)
+				for (; *string != '\0'; string++)
 				{
-					int s_len = strlen(s);
-
-					write(1, s, s_len);
-					char_len += s_len;
-				} else
-					return (-1);
+					write(1, string, 1);
+					count++;
+				}
+			} else if (*format == '%')
+			{
+				write(1, "%", 1);
+				write(1, format, 1);
+				count += 2;
 			}
+		} else
+		{
+			write(1, format, 1);
+			count++;
 		}
-	}
-	va_end(myprint);
-	return (char_len);
+	} va_end(my_list);
+	return (count);
 }
