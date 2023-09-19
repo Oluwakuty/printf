@@ -36,26 +36,22 @@ int _printf(const char *format, ...)
 
 				write(1, &fp, 1);
 				char_len++;
-			} else
+			} else if (format[j] == 'c') /*handle c convr*/
 			{
-				if (format[j] == 'c') /*handle c convr*/
-				{	char c = va_arg(myprint, int);/*check single char*/
-					if ((c >= ' ') && (c <= '~')) /*error handling for c*/
-					{
-						write(1, &c, 1);
-						char_len++;
-					} else 
-						return (-1);
-				} else if (format[j] == 's') /*handle s convr*/
-				{
-					char *s = va_arg(myprint, char *); /*store string in s*/
-					int s_len = strlen(s);
+				char c = va_arg(myprint, int);/*check single char*/
 
-					write(1, s, s_len);
-					char_len += s_len;
-				}
+				write(1, &c, 1);
+				char_len++;
+			} else if (format[j] == 's') /*handle s convr*/
+			{
+				char *s = va_arg(myprint, char *); /*store string in s*/
+				int s_len = strlen(s);
+
+				write(1, s, s_len);
+				char_len += s_len;
 			}
 		}
-	} va_end(myprint);
+	}
+	va_end(myprint);
 	return (char_len);
 }
