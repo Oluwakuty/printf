@@ -10,44 +10,44 @@
 
 int _printf(const char *format, ...)
 {
-	va_list myprint; /*declare the name of our list as myprint*/
+	va_list args;
 
-	int format_len = strlen(format), char_len = 0, i;
+	va_start(args, format);
+	int count = 0;
 
-	va_start(myprint, format); /*init arg list*/
-
-	if (format == NULL) /*check invalid input*/
-		return (-1);
-
-	for (i = 0; i < format_len; i++)
+	while (*format)
 	{
-		if (format[i] != '%') /*check for char wth format*/
-		{	char fp = format[i];
+		if (*format == '%')
+		{	format++; /* Move past '%'*/
 
-			write(1, &fp, 1);
-			char_len++; /*increment string lenght*/
-		} else
-		{	int j = ++i;
+			switch (*format) /* Handle different conversion specifiers */
+			{	case 'c': {
+						  char c = va_arg(args, int); /* Fetch char argument */
 
-			if (format[j] == '%') /*handle % convr*/
-			{	char fp = format[j];
+						_putchar(c);
+						count++;
+						break;
+					}
+				case 's': {
+					char *str = va_arg(args, char *); /* Fetch string argument */
 
-				write(1, &fp, 1);
-				char_len++;
-			} else if (format[j] == 'c') /*handle c convr*/
-			{	char c = va_arg(myprint, int);/*check single char*/
-
-				write(1, &c, 1);
-				char_len++;
-			} else if (format[j] == 's') /*handle s convr*/
-			{
-				char *s = va_arg(myprint, char *); /*store string in s*/
-				int s_len = strlen(s);
-
-				write(1, s, s_len);
-				char_len += s_len;
+					for (int i = 0; str[i] != '\0'; i++)
+					{
+						_putchar(str[i]);
+						count++;
+					} break;
+					}
+				case '%':
+					  _putchar('%');
+					  count++;
+					break;
+				default: /* Unknown conversion specifier, ignore it */
+				break;
 			}
-		}
-	} va_end(myprint);
-	return (char_len);
+			_putchar(*format);
+			count++;
+			format++;
+		} va_end(args);
+		return (count);
+	}
 }
