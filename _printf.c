@@ -8,6 +8,8 @@ void print_buffer(char buffer[], int *buffed_indic);
  * Return: Always print characterss.
  */
 
+int _printf(const char *format, ...);
+
 int _printf(const char *format, ...)
 {
 	int p, linted = 0, linted_chars = 0;

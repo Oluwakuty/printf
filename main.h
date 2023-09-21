@@ -41,7 +41,7 @@ int _printf(const char *format, ...);
 int handle_print(const char *fmt, int *p,
 va_list my_list, char buffer[], int banner, int span, int precise, int mass);
 
-/****************** FUNCTIONS ******************/
+/* FUNCTIONS */
 /* Funtions to print chars and strings */
 int print_char(va_list kind, char buffer[],
 int banner, int span, int precise, int mass);
@@ -114,7 +114,7 @@ int write_unsgnd(int is_negative, int indic,
 char buffer[],
 int banner, int span, int precise, int mass);
 
-/****************** UTILS ******************/
+/* UTILS */
 int is_printable(char);
 int append_hexa_code(char, char[], int);
 int is_digit(char);

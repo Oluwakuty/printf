@@ -1,6 +1,6 @@
 #include "main.h"
 
-/************************* OUTPUT UNSIGNED NUMBER *************************/
+/* OUTPUT UNSIGNED NUMBER */
 /**
  * print_unsigned - Output an unsigned number
  * @kind: List a of arguments
@@ -33,7 +33,7 @@ int print_unsigned(va_list kind, char buffer[],
 	return (write_unsgnd(0, p, buffer, banner, span, precise, mass));
 }
 
-/************* OUTPUT UNSIGNED NUMBER IN OCTAL  ****************/
+/* OUTPUT UNSIGNED NUMBER IN OCTAL  */
 /**
  * print_octal - Ouput an unsigned number in octal notation
  * @kind: Lista of arguments
@@ -70,7 +70,7 @@ int print_octal(va_list kind, char buffer[],
 	return (write_unsgnd(0, p, buffer, banner, span, precise, mass));
 }
 
-/************** OUTPUT UNSIGNED NUMBER IN HEXADECIMAL **************/
+/* OUTPUT UNSIGNED NUMBER IN HEXADECIMAL */
 /**
  * print_hexadecimal - Output an unsigned number in hexadecimal notation
  * @kind: Lista of arguments
@@ -89,7 +89,7 @@ int print_hexadecimal(va_list kind, char buffer[],
 				banner, 'x', span, precise, mass));
 }
 
-/************* OUTPUT UNSIGNED NUMBER IN UPPER HEXADECIMAL **************/
+/* OUTPUT UNSIGNED NUMBER IN UPPER HEXADECIMAL */
 /**
  * print_hexa_upper - Output an unsigned number in upper hexadecimal notation
  * @kind: Lista of arguments
@@ -108,7 +108,7 @@ int print_hexa_upper(va_list kind, char buffer[],
 				banner, 'X', span, precise, mass));
 }
 
-/************** OUTPUT HEXX NUM IN LOWER OR UPPER **************/
+/* OUTPUT HEXX NUM IN LOWER OR UPPER */
 /**
  * print_hexa - Output a hexadecimal number in lower or upper
  * @kind: Lista of arguments

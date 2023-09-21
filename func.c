@@ -1,6 +1,6 @@
 #include "main.h"
 
-/************************* OUTPUT CHARACTER *************************/
+/* OUTPUT CHARACTER */
 
 /**
  * print_char - Output a character
@@ -21,7 +21,7 @@ int print_char(va_list kind, char buffer[],
 	return (handle_write_char(b, buffer, banner, span, precise, mass));
 }
 
-/************************* OUTPUT A STRING *************************/
+/* OUTPUT A STRING */
 /**
  * print_string - Output a string
  * @kind: List a of arguments
@@ -78,7 +78,7 @@ int print_string(va_list kind, char buffer[],
 	return (write(1, str, lent));
 }
 
-/************************* OUTPUT PERCENTAGE SIGN *************************/
+/* OUTPUT PERCENTAGE SIGN */
 /**
  * print_percent - Prints a percent sign
  * @kind: Lista of arguments
@@ -102,7 +102,7 @@ int print_percent(va_list kind, char buffer[],
 	return (write(1, "%%", 1));
 }
 
-/************************* OUTPUT INTEGER *************************/
+/* OUTPUT INTEGER */
 /**
  * print_int - Output integer
  * @kind: Lista of arguments
@@ -144,7 +144,7 @@ int print_int(va_list kind, char buffer[],
 	return (write_number(is_negative, p, buffer, banner, span, precise, mass));
 }
 
-/************************* OUTPUT BINARY *************************/
+/* OUTPUT B */
 /**
  * print_binary - Output an unsigned number
  * @kind: Lista of arguments
