@@ -1,66 +1,66 @@
 #include "main.h"
 
-void print_buffer(char buffer[], int *buff_ind);
+void print_buffer(char buffer[], int *buffed_indic);
 
 /**
- * _printf - Printf function
+ * _printf - Printf projectfunction
  * @format: format.
- * Return: Printed chars.
+ * Return: Always print characterss.
  */
 
 int _printf(const char *format, ...)
 {
-	int i, printed = 0, printed_chars = 0;
-	int flags, width, precision, size, buff_ind = 0;
+	int p, linted = 0, linted_chars = 0;
+	int banner, span, precise, mass, buffed_indic = 0;
 
-	va_list list;
+	va_list my_list;
 	char buffer[BUFF_SIZE];
 
 	if (format == NULL)
 		return (-1);
 
-	va_start(list, format);
+	va_start(my_list, format);
 
-	for (i = 0; format && format[i] != '\0'; i++)
+	for (p= 0; format && format[p] != '\0'; p++)
 	{
-		if (format[i] != '%')
+		if (format[p] != '%')
 		{
-			buffer[buff_ind++] = format[i];
-			if (buff_ind == BUFF_SIZE)
-				print_buffer(buffer, &buff_ind);
+			buffer[buffed_indic++] = format[p];
+			if (buffed_indic == BUFF_SIZE)
+				print_buffer(buffer, &buffed_indic);
 
-			/* write(1, &format[i], 1);*/
-			printed_chars++;
+			/* write(1, &format[p], 1);*/
+			linted_chars++;
 		}
 		else
 		{
-			print_buffer(buffer, &buff_ind);
-			flags = get_flags(format, &i);
-			width = get_width(format, &i, list);
-			precision = get_precision(format, &i, list);
-			size = get_size(format, &i);
-			++i;
-			printed = handle_print(format, &i, list, buffer,
-					flags, width, precision, size);
-			if (printed == -1)
+			print_buffer(buffer, &buffed_indic);
+			banner = get_banner(format, &p);
+			span = get_span(format, &p, my_list);
+			precise = get_precise(format, &p, my_list);
+			mass = get_mass(format, &p);
+			++p;
+			linted = handle_print(format, &p, my_list, buffer,
+					banner, span, precise, mass);
+			if (linted == -1)
 				return (-1);
-			printed_chars += printed;
+			linted_chars += linted;
 		}
 	}
-	print_buffer(buffer, &buff_ind);
-	va_end(list);
-	return (printed_chars);
+	print_buffer(buffer, &buffed_indic);
+	va_end(my_list);
+	return (linted_chars);
 }
 
 /**
- * print_buffer - Prints the contents of the buffer if it exist
+ * print_buffer - To print the contents of the buffer if it exist
  * @buffer: Array of chars
- * @buff_ind: Index at which to add next char, represents the length.
+ * @buffed_indic: Index at which to add next char, represents the length.
  */
 
-void print_buffer(char buffer[], int *buff_ind)
+void print_buffer(char buffer[], int *buffed_indic)
 {
-	if (*buff_ind > 0)
-		write(1, &buffer[0], *buff_ind);
-	*buff_ind = 0;
+	if (*buffed_indic > 0)
+		write(1, &buffer[0], *buffed_indic);
+	*buffed_indic = 0;
 }
